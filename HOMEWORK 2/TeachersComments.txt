@@ -1,0 +1,7 @@
+Well done!
+
+4
+e) -0.5
+Color is not asked in the SELECT and if it's not in the select, it's not needed in the GROUP BY. It gives you incorrect result.
+
+Mark: 10
