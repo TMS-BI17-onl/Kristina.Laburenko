@@ -1,0 +1,25 @@
+Well done!
+
+4
+f) -0.5
+Correct answer:
+
+SELECT FirstName,	
+		LastName,
+		DENSE_RANK() OVER (ORDER BY SalesYTD DESC) AS raiting,
+		DENSE_RANK() OVER (ORDER BY SalesLastYear DESC) AS raitingLY,
+		CONCAT(UPPER(LEFT(LastName, 3)), 'login', ISNULL(TerritoryGroup, ''))AS [login]
+FROM Sales.vSalesPerson
+
+g) -2
+The solution can be found in the google.
+My solution:
+SELECT DATEADD(DAY, 1, EOMONTH(GETDATE(), -1)) AS first_day_of_month,
+		--CONVERT(DATE, DATEADD(DAY, -DATEPART(DAY,GETDATE())+1 ,GETDATE())) AS optional_way,
+		DATEPART(DW, DATEADD(DAY, 1, EOMONTH(GETDATE(), -1))) AS [it's number],
+		CASE WHEN DATEPART(DW, DATEADD(DAY, 1, EOMONTH(GETDATE(), -1)))<=5 
+				THEN DATEADD(DAY, 1, EOMONTH(GETDATE(), -1))
+		ELSE DATEADD(DAY, (7-DATEPART(DW, DATEADD(DAY, 1, EOMONTH(GETDATE(), -1)))+1), DATEADD(DAY, 1, EOMONTH(GETDATE(), -1))) 
+		END AS first_working_day
+
+Mark: 8
